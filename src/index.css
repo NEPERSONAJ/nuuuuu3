@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --neon-cyan: #00e5ff;
+    --dark-bg: #040714;
+    --neon-glow: 0 0 10px rgba(0, 229, 255, 0.3);
+    --neon-glow-strong: 0 0 20px rgba(0, 229, 255, 0.5);
+  }
+
+  body {
+    @apply bg-[var(--dark-bg)] text-white;
+    font-family: 'JetBrains Mono', monospace;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.15) 0%, transparent 50%),
+      linear-gradient(rgba(4, 7, 20, 0.95), rgba(4, 7, 20, 0.95));
+    background-size: 100% 100%, 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Scrollbar Styles */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--neon-cyan);
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 229, 255, 0.8);
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border-2 border-[#00e5ff] shadow-[0_0_20px_rgba(0,229,255,0.3)];
+  }
+
+  .neon-text {
+    @apply text-[#00e5ff] drop-shadow-[0_0_3px_rgba(0,229,255,0.5)];
+  }
+
+  .cyber-button {
+    @apply bg-transparent border-2 border-[#00e5ff] rounded-lg p-3
+           text-[#00e5ff] font-['JetBrains_Mono'] tracking-wider uppercase
+           hover:bg-[#00e5ff] hover:bg-opacity-10 hover:text-[#00e5ff]
+           hover:shadow-[0_0_20px_rgba(0,229,255,0.5)]
+           focus:outline-none focus:shadow-[0_0_20px_rgba(0,229,255,0.5)]
+           transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .cyber-input {
+    @apply w-full bg-transparent border-2 border-[#00e5ff] rounded-lg p-3
+           text-[#00e5ff] placeholder-[#00e5ff] placeholder-opacity-50
+           focus:outline-none focus:shadow-[0_0_10px_rgba(0,229,255,0.3)]
+           font-['JetBrains_Mono'] uppercase tracking-wider;
+  }
+
+  .neon-link {
+    @apply text-[#00e5ff] hover:text-[#00e5ff] transition-colors duration-300 relative;
+  }
+
+  .neon-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Исправленная высота */
+    background-color: var(--neon-cyan);
+    transition: all 0.3s ease;
+  }
+
+  .neon-link:hover::after {
+    width: 100%;
+  }
+
+  .neon-card {
+    @apply bg-[rgba(4,7,20,0.95)] rounded-2xl p-6 neon-border
+           hover:shadow-[0_0_20px_rgba(0,229,255,0.5)]
+           transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .neon-tab {
+    @apply flex-1 pb-2 border-b-2 transition-all text-center font-['JetBrains_Mono']
+           border-gray-700 text-gray-500 hover:text-[#00e5ff] 
+           hover:border-[#00e5ff] hover:border-opacity-50;
+  }
+
+  .neon-tab-active {
+    @apply border-[#00e5ff] text-[#00e5ff];
+  }
+}
